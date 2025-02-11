@@ -1,0 +1,64 @@
+# Python dosyaları
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+#  Genellikle bu dosyalar tek bir dizinde bulunur
+*.spec
+build/
+dist/
+
+# IDE ve editörler
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Ortam ve sanal ortamlar
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# İşletim sistemi dosyaları
+.DS_Store
+Thumbs.db
+
+# Log ve veritabanı dosyaları
+*.log
+*.sqlite
+
+# Test ve coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Yerel ayarlar
+local_settings.py 
