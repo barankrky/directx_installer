@@ -1,4 +1,4 @@
-import os, requests, zipfile, subprocess, time
+import os, requests, zipfile, subprocess, time, shutil
 
 def download_directx_zip(url, save_path):
     try:
@@ -21,12 +21,15 @@ def download_directx_zip(url, save_path):
 
 def extract_zip(zip_path, extract_to):
     try:
+        if not os.path.exists(extract_to):
+            os.makedirs(extract_to)
+        
         with zipfile.ZipFile(zip_path, 'r') as zip_ref:
             total_files = len(zip_ref.infolist())
             for i, file in enumerate(zip_ref.infolist(), 1):
                 zip_ref.extract(file, extract_to)
                 percent = (i / total_files) * 100
-                print(f"\r> Extracting runtime packages : % {percent:.1f}", end="")
+                print(f"\r> Extracting runtime packages : %{percent:.1f}", end="")
         print()
     except Exception as e:
         print(f"\n> Extraction failed: {e}")
@@ -34,7 +37,8 @@ def extract_zip(zip_path, extract_to):
 
 def install_directx(installer_path):
     try:
-        subprocess.run([installer_path, '/silent'], check=True)
+        process = subprocess.Popen([installer_path, '/silent'])
+        process.wait()
     except Exception as e:
         print(f"> Installation failed: {e}")
         raise
@@ -55,8 +59,8 @@ def start():
         print("> Installing runtime packages...")
         install_directx(installer_path)
 
-        os.remove(zip_path)
-        os.remove(extract_path)
+        shutil.rmtree(zip_path, ignore_errors=True)
+        shutil.rmtree(extract_path, ignore_errors=True)
         print("> Installation completed. Exiting in 5 seconds...")
         time.sleep(5)
         exit()
