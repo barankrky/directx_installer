@@ -9,6 +9,9 @@ Bu proje, DirectX runtime paketlerini otomatik olarak indirip kuran bir Python s
 - Sessiz modda kurulum
 - Kurulum sonrası geçici dosyaları temizleme
 
+## İndir
+- Buraya tıklayarak kurulum dosyasını indirebilirsiniz.
+
 ## Kaynak Kodu
 
 1. Projeyi klonlayın:
