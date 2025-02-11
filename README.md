@@ -10,7 +10,7 @@ Bu proje, DirectX runtime paketlerini otomatik olarak indirip kuran bir Python s
 - Kurulum sonrası geçici dosyaları temizleme
 
 ## İndir
-- Buraya tıklayarak kurulum dosyasını indirebilirsiniz.
+- [Buraya tıklayarak](https://github.com/barankrky/directx_installer/releases/latest) kurulum dosyasını indirebilirsiniz.
 
 ## Kaynak Kodu
 
