@@ -45,17 +45,18 @@ def start():
         temp_path = os.environ['TEMP']
         zip_path = os.path.join(temp_path, 'directx.zip')
         extract_path = os.path.join(temp_path, 'directx_installer')
-        installer_path = os.path.join(extract_path, '.setup.exe')  
+        installer_path = os.path.join(extract_path, 'directx', '.setup.exe')  
 
         download_directx_zip(directx_url, zip_path)
 
         os.makedirs(extract_path, exist_ok=True)
         extract_zip(zip_path, extract_path)
 
-        print("Installing runtime packages...")
+        print("> Installing runtime packages...")
         install_directx(installer_path)
 
         os.remove(zip_path)
+        os.remove(extract_path)
         print("> Installation completed. Exiting in 5 seconds...")
         time.sleep(5)
         exit()
