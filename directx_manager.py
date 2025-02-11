@@ -13,7 +13,7 @@ def download_directx_zip(url, save_path):
                 file.write(data)
                 progress += len(data)
                 percent = (progress / total_size) * 100
-                print(f"\r> Downloading: %{percent:.1f}", end="")
+                print(f"\r> Downloading runtime packages : % {percent:.1f}", end="")
         print()
     except Exception as e:
         print(f"\n> Download failed: {e}")
@@ -26,7 +26,7 @@ def extract_zip(zip_path, extract_to):
             for i, file in enumerate(zip_ref.infolist(), 1):
                 zip_ref.extract(file, extract_to)
                 percent = (i / total_files) * 100
-                print(f"\r> Extracting: %{percent:.1f}", end="")
+                print(f"\r> Extracting runtime packages : % {percent:.1f}", end="")
         print()
     except Exception as e:
         print(f"\n> Extraction failed: {e}")
@@ -42,14 +42,13 @@ def install_directx(installer_path):
 def start():
     try:
         directx_url = 'https://github.com/barankrky/directx_installer/raw/refs/heads/main/directx.zip'  
-        zip_path = 'directx.zip'
-        extract_path = os.path.join(os.environ['TEMP'], 'directx_installer')
-        installer_path = os.path.join(extract_path, 'directx_installer.exe')  
+        temp_path = os.environ['TEMP']
+        zip_path = os.path.join(temp_path, 'directx.zip')
+        extract_path = os.path.join(temp_path, 'directx_installer')
+        installer_path = os.path.join(extract_path, '.setup.exe')  
 
-        print("> Downloading runtime packages...")
         download_directx_zip(directx_url, zip_path)
 
-        print("> Extracting runtime packages...")
         os.makedirs(extract_path, exist_ok=True)
         extract_zip(zip_path, extract_path)
 
